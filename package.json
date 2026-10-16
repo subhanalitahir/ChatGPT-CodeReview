@@ -14,11 +14,11 @@
     "code review"
   ],
   "scripts": {
-    "start": "node -r dotenv/config ./dist/index.js",
+    "start": "node init && node -r dotenv/config ./dist/index.js",
     "test": "jest",
-    "build": "node -e \"require('fs').rmSync('dist',{recursive:true,force:true})\" && rollup -c rollup.config.cjs && ncc build src/github-action.cjs -o action",
+    "build": "node init && node -e \"require('fs').rmSync('dist',{recursive:true,force:true})\" && rollup -c rollup.config.cjs && ncc build src/github-action.cjs -o action",
     "kawnix:preflight": "node dist/kawnix-preflight.js",
-    "build:lambda": "ncc build src/aws-lambda.cjs -o lambda"
+    "build:lambda": "node init && ncc build src/aws-lambda.cjs -o lambda"
   },
   "dependencies": {
     "@probot/adapter-aws-lambda-serverless": "^3.0.2",
